@@ -1,4 +1,4 @@
-# Ride Hailing Project(BackEnd)
+# Ride Hailing Project(Backend)
 
 ## Overview
 
