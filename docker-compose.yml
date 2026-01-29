@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7
+    container_name: ride-redis
+    ports:
+      - "6379:6379"
+
+  ride-api:
+    build: ./ride-api
+    container_name: ride-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./ride-api/.env
+    depends_on:
+      - redis
+
+  ride-worker:
+    build: ./ride-worker
+    container_name: ride-worker
+    env_file:
+      - ./ride-worker/.env
+    depends_on:
+      - redis
