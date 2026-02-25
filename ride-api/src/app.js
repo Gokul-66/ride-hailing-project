@@ -2,8 +2,10 @@ import express from "express";
 import rideRoutes from "./routes/rideRoutes.js";
 import healthRoutes from "./routes/healthRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 
