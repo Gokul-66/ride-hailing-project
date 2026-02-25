@@ -7,4 +7,3 @@ export const connection = process.env.REDIS_URL
 
 console.log("Redis connection:", connection);
 
-export { connection };
