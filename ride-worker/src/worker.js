@@ -4,6 +4,7 @@ import { Worker } from "bullmq";
 import mongoose from "mongoose";
 import { connection } from "./config/redis.js";
 import Ride from "./models/Ride.js";
+import http from "http";
 
 const ASSIGNMENT_DELAY_MS = Number(process.env.ASSIGNMENT_DELAY_MS || 60000);
 
@@ -76,4 +77,11 @@ process.on("SIGINT", async () => {
   await rideWorker.close();
   await mongoose.connection.close();
   process.exit(0);
+});
+
+
+const PORT = process.env.PORT || 10000;
+
+http.createServer(() => { }).listen(PORT, () => {
+  console.log(`Worker heartbeat server running on ${PORT}`);
 });
