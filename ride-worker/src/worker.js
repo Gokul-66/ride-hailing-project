@@ -79,9 +79,10 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
-
 const PORT = process.env.PORT || 10000;
 
-http.createServer(() => { }).listen(PORT, () => {
-  console.log(`Worker heartbeat server running on ${PORT}`);
-});
+http
+  .createServer(() => { })
+  .listen(PORT, "0.0.0.0", () => {
+    console.log(`Worker heartbeat server running on ${PORT}`);
+  });
