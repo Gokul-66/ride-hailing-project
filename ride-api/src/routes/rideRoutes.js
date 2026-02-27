@@ -56,7 +56,7 @@ router.post("/rides", async (req, res, next) => {
       riderName,
       pickup,
       drop,
-      status: "pending",
+      status: "REQUESTED",
     });
 
     await rideQueue.add("ride-created", { rideId: ride._id.toString() });
